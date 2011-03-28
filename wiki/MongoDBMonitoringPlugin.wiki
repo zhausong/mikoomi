@@ -1,0 +1,71 @@
+=MongoDB Monitoring Plugin=
+
+==Overview==
+
+The *MongoDB Monitoring Plugin* is a plugin for Zabbix to monitor standalone, replicated as well as clustered MongoDB instances. The plugin monitors availability, resource utilization, health, performance and other important metrics of a MongoDB environment. Coupled with the Zabbix OS level monitoring, the MongoDB plugin provides great peace of mind knowing that MongoDB is being monitored 24x7 and sufficient data would be available for sizing, scalability, troubleshooting and support.
+
+
+==Setup and Configuration==
+
+The MongoDB Monitoring Plugin consists of the following:
+  * Zabbix template
+  * A shell script that is invoked by Zabbix server for collecting monitoring data
+  * A php script that uses the MongoDB php driver to connect to MongoDB server and actually collect the monitoring data
+
+The plugin has been tested on Ubuntu and openSUSE installations of Zabbix server. The instructions that follow are geared towards setting up the plugin on the Zabbix appliance, but similar steps can be followed for other Linux and Zabbix supported `*`nix platforms. Download the Zabbix appliance or compile/setup an appropriate Zabbix server using Zabbix's download link http://www.zabbix.com/download.php. Note that Zabbix appliance and Zabbix server mean the same thing in the instructions that follow.
+
+Follow the Zabbix documentation (http://www.zabbix.com/documentation/) on compiling & configuring a Zabbix server or setting up the Zabbix appliance. Ensure that the Zabbix server is setup and working correctly. If  using the Zabbix appliance, ensure that the ports for the Zabbix server and agent are open in the firewall using the following commands:
+  * SuSEfirewall2 open EXT TCP zabbix-trapper zabbix-agent
+  * SuSEfirewall2 stop
+  * SuSEfirewall2 start
+
+Next ensure that you can login to the Zabbix UI/front-end (user = admin, password = zabbix). See the Zabbix documentation for details.
+
+Ensure that you can login to the Zabbix UI/front-end (user = admin, password = zabbix). See the Zabbix documentation for details.
+
+The MongoDB plugin uses the MongoDB PHP driver which needs to be installed on the Zabbix server.  For this, install and setup the following packages:
+  * *php5-dev (or php5-devel)* = Files for PHP5 module development
+  * *php-pear* = PEAR - PHP Extension and Application Repository
+  * *gcc* = GNU C Compiler
+
+To install the above on the Zabbix appliance, login into the appliance as root (default password = zabbix) and run the following commands:
+  * yast -i php5-devel
+  * yast -i gcc
+  * yast -i php-pear
+
+Now install the php MongoDB driver using the instructions at http://us2.php.net/manual/en/mongo.installation.php
+
+Ensure that the php MongoDB driver is setup and configured properly by testing out one of the sample php programs for MongoDB driver (http://us2.php.net/manual/en/mongo.tutorial.php).
+
+Next login to the Zabbix appliance as root (password = zabbix) and create a directory /etc/zabbix/externalscripts (change the owner to zabbix - optional, but recommended).
+
+Download the MongoDB Plugin shell script and php files and copy them into the /etc/zabbix/externalscripts directory on the Zabbix server.
+
+Next open up a browser and download the MongoDB Zabbix template.
+Now login to the Zabbix frontend (user = admin, password = zabbix).
+
+Navigate as follows: 
+  * Configuration >> Templates
+  * Click on the "Import Template" button on the top right-hand corner
+  * In the "Import file" box, browse/search/enter the filename of the Zabbix template that was downloaded
+  * Upload the template
+
+*_Now you are ready to start monitoring your MongoDB servers !_*
+
+To start monitoring a MongoDB server
+  * login to the Zabbix front-end and navigate to *_Configuration >> Hosts_*
+  * Click on *_Create Host_* button on the top right-hand corner. 
+  * Fill in the details - where Name = your choice of name for the MongoDB server to be monitored
+  * Next click on the *_Add_* button in the *_Linked templates_* section of the screen.
+  * You will see a list of templates - select the template *_Template_MongoDB_*
+
+In the Macros section, add the following two macros -
+*{$SERVER}* and *{$PORT}*
+
+The value for {$SERVER} should be the hostname or IP address for your mongod or mongos process to be monitored.
+
+The value for {$PORT} should be the port number for your mongod or mongos process (it is required even if the default port is used).
+
+Note that in a sharded and/or replicated MongoDB environment, you only need to monitor ONE of the mongos process. However that process needs to be aware of the complete Mongo environment. Save the configuration and Zabbix should start collecting data within 60 seconds.
+
+Data is collected by the template at intervals of 60 seconds for each monitored MonogoDB server/environment.
