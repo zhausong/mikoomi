@@ -12,7 +12,7 @@ The MongoDB Monitoring Plugin consists of the following:
   * A shell script that is invoked by Zabbix server for collecting monitoring data
   * A php script that uses the MongoDB php driver to connect to MongoDB server and actually collect the monitoring data
 
-The plugin has been tested on Ubuntu and openSUSE installations of Zabbix server. The instructions that follow are geared towards setting up the plugin on the Zabbix appliance, but similar steps can be followed for other Linux and Zabbix supported `*`nix platforms. Download the Zabbix appliance or compile/setup an appropriate Zabbix server using Zabbix's download link http://www.zabbix.com/download.php. Note that Zabbix appliance and Zabbix server mean the same thing in the instructions that follow.
+The plugin has been tested on Ubuntu server and the openSUSE appliance from Zabbix. The instructions that follow are geared towards setting up the plugin on the Zabbix appliance, but similar steps can be followed for other Linux and Zabbix supported `*`ix platforms. Download the Zabbix appliance or compile/setup an appropriate Zabbix server using Zabbix's download link http://www.zabbix.com/download.php. Note that Zabbix appliance and Zabbix server are used interchangeably in the instructions that follow.
 
 Follow the Zabbix documentation (http://www.zabbix.com/documentation/) on compiling & configuring a Zabbix server or setting up the Zabbix appliance. Ensure that the Zabbix server is setup and working correctly. If  using the Zabbix appliance, ensure that the ports for the Zabbix server and agent are open in the firewall using the following commands:
   * SuSEfirewall2 open EXT TCP zabbix-trapper zabbix-agent
@@ -37,7 +37,7 @@ Now install the php MongoDB driver using the instructions at http://us2.php.net/
 
 Ensure that the php MongoDB driver is setup and configured properly by testing out one of the sample php programs for MongoDB driver (http://us2.php.net/manual/en/mongo.tutorial.php).
 
-Next login to the Zabbix appliance as root (password = zabbix) and create a directory /etc/zabbix/externalscripts (change the owner to zabbix - optional, but recommended).
+Next login to the Zabbix appliance as root (password = zabbix) and create a directory /etc/zabbix/externalscripts. Change the owner/group of the directory to zabbix/zabbix.
 
 Download the MongoDB Plugin shell script and php files and copy them into the /etc/zabbix/externalscripts directory on the Zabbix server.
 
@@ -47,7 +47,7 @@ Now login to the Zabbix frontend (user = admin, password = zabbix).
 Navigate as follows: 
   * Configuration >> Templates
   * Click on the "Import Template" button on the top right-hand corner
-  * In the "Import file" box, browse/search/enter the filename of the Zabbix template that was downloaded
+  * In the "Import file" dialog box, browse/search/enter the filename of the Zabbix template that was downloaded
   * Upload the template
 
 *_Now you are ready to start monitoring your MongoDB servers !_*
