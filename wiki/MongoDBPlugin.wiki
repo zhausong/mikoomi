@@ -16,7 +16,7 @@ The MongoDB plugin uses the MongoDB PHP driver which needs to be installed on th
 To install the above on a Zabbix appliance, login into the appliance as root (default password = zabbix) and run the following commands:
   * yast -i php5-devel
   * yast -i gcc
-  * yast -i php-pear
+  * yast -i php5-pear
 
 Now install the php MongoDB driver using the instructions at http://us2.php.net/manual/en/mongo.installation.php
 
