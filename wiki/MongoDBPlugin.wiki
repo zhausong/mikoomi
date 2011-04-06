@@ -52,7 +52,7 @@ Navigate as follows:
 *_Now you are ready to start monitoring your MongoDB servers !_*
 
 
-==Monnitoring a MongoDB Environment==
+==Monitoring a MongoDB Environment (server or cluster)==
  
 Follow these steps to start monitoring a MongoDB server 
   * login to the Zabbix front-end and navigate to *_Configuration >> Hosts_*
@@ -68,6 +68,8 @@ The value for {$SERVER} should be the hostname or IP address for your mongod or 
 
 The value for {$PORT} should be the port number for your mongod or mongos process (it is required even if the default port is used).
 
-Note that in a sharded and/or replicated MongoDB environment, you only need to monitor ONE of the mongos process. However that process needs to be aware of the complete Mongo environment. Save the configuration and Zabbix should start collecting data within 60 seconds.
+*Note that in a sharded and/or replicated MongoDB environment, you need to monitor only ONE of the mongos process*. However that process needs to be aware of the entire Mongo environment - i.e. all the shards and all the replicas within each replicaset. 
+
+Save the configuration and Zabbix should start collecting data within 60 seconds.
 
 Data is collected by the template at intervals of 60 seconds for each monitored MonogoDB server/environment.
