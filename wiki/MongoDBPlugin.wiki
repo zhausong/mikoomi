@@ -10,15 +10,31 @@ The *MongoDB Plugin* can be used to monitor standalone, replicated as well as cl
 
 The MongoDB plugin uses the MongoDB PHP driver which needs to be installed on the Zabbix server.  For this, install and setup the following packages:
   * *php5-dev (or php5-devel)* = Files for PHP5 module development
-  * *php-pear* = PEAR - PHP Extension and Application Repository
+  * *php5-pear* = PEAR - PHP Extension and Application Repository
   * *gcc* = GNU C Compiler
+  * *make* = make utility
 
 To install the above on a Zabbix appliance, login into the appliance as root (default password = zabbix) and run the following commands:
   * yast -i php5-devel
   * yast -i gcc
   * yast -i php5-pear
+  * yast -i make
 
 Now install the php MongoDB driver using the instructions at http://us2.php.net/manual/en/mongo.installation.php
+
+In the case of the Zabbix appliance, run the the following pecl command:
+  * pecl install mongo
+
+After successful installation of the MongoDB driver, you need to "enable" it within php5. Edit the two files */etc/php5/cli/php.ini and /etc/php5/apache2/php.ini* and add a line to the "Dynamic Extensions" sections as shown below.
+
+{{{
+;;;;;;;;;;;;;;;;;;;;;;
+; Dynamic Extensions ;
+;;;;;;;;;;;;;;;;;;;;;;
+
+extension=mongo.so
+}}}
+
 
 Ensure that the php MongoDB driver is setup and configured properly by testing out one of the sample php programs for MongoDB driver (http://us2.php.net/manual/en/mongo.tutorial.php).
 
