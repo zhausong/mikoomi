@@ -53,7 +53,7 @@ Navigate as follows:
 *_Now you are ready to start monitoring your MongoDB servers !_*
 
 
-==Monitoring a MongoDB Environment (server or cluster)==
+==Monitoring a MongoDB Environment (single server, replicaset or cluster)==
  
 Follow these steps to start monitoring a MongoDB server 
   * login to the Zabbix front-end and navigate to *_Configuration >> Hosts_*
