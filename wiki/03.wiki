@@ -69,7 +69,7 @@ The value for {$SERVER} should be the hostname or IP address for your mongod or 
 
 The value for {$PORT} should be the port number for your mongod or mongos process (it is required even if the default port is used).
 
-*Note that in a sharded and/or replicated MongoDB environment, you need to monitor only ONE of the mongos process*. However that process needs to be aware of the entire Mongo environment - i.e. all the shards and all the replicas within each replicaset. 
+*Note that in a sharded and/or replicated MongoDB environment, you need to monitor only ONE of the mongos process*. However that process needs to be aware of the entire Mongo environment (or cluster) - i.e. all the shards and all the replicas within each replicaset. 
 
 Save the configuration and Zabbix should start collecting data within 60 seconds.
 
