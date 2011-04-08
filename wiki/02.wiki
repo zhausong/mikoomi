@@ -1,4 +1,4 @@
-#labels MikoomiPluginsOverview,Featured,Phase-Deploy
+#labels Mikoomi,Plugins,Overview
 = Mikoomi Plugins Overview =
 
 Mikoomi plugins are configuration and script addons for Zabbix that extend the monitoring capabilities of Zabbix. All plugins consist of the following -
