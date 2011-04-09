@@ -1,4 +1,4 @@
-#summary Zabbix Appliance Setup
+#summary Chapter 1: Zabbix Appliance Setup
 
 =Zabbix Appliance Setup=
 
