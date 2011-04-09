@@ -1,4 +1,5 @@
-#labels Zabbix,Appliance,Setup
+#summary Zabbix Appliance Setup
+
 =Zabbix Appliance Setup=
 
 All plugins in this projected have been tested on the openSUSE appliance from Zabbix. And all instructions for the setup and configuration of plugins are geared towards the Zabbix appliance. However similar steps can be followed for other Linux and Zabbix supported `*`ix platforms.
