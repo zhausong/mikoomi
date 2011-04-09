@@ -1,4 +1,4 @@
-#summary Mikoomi Plugins Overview
+#summary Chapter 2: Mikoomi Plugins Overview
 
 = Mikoomi Plugins Overview =
 
