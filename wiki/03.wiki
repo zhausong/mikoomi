@@ -1,4 +1,6 @@
+#summary MongoDB Plugin
 #labels MongoDB,Plugin
+
 =MongoDB Plugin=
 
 
@@ -175,6 +177,8 @@ The MongoDB plugin comes with the following built-in triggers:
 ==Pre-canned Graphs==
 While Zabbix allows creating graphing one or more monitored metric, the plugin comes with the following pre-canned graphs to get you productive immediately:
 
+*MongoDB Cumulative Database Size in MB*
+
 *MongoDB Memory Footprint:* This graph plots the following metrics
   * Virtual Memory Size (MB)
   * Heap Memory Size (MB)
@@ -188,5 +192,4 @@ While Zabbix allows creating graphing one or more monitored metric, the plugin c
   * Total Command Ops in Last 1 Minute
   * Total Get More Ops in Last 1 Minute
 
-*MongoDB Cumulative Database Size in MB*
  
