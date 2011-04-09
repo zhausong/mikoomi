@@ -1,5 +1,4 @@
-#summary MongoDB Plugin
-#labels MongoDB,Plugin
+#summary Chapter 3: MongoDB Plugin
 
 =MongoDB Plugin=
 
