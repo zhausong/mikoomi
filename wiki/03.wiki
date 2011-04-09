@@ -53,6 +53,7 @@ Navigate as follows:
 *_Now you are ready to start monitoring your MongoDB servers !_*
 
 
+
 ==Monitoring a MongoDB Environment (single server, replicaset or cluster)==
  
 Follow these steps to start monitoring a MongoDB server 
@@ -74,3 +75,118 @@ The value for {$PORT} should be the port number for your mongod or mongos proces
 Save the configuration and Zabbix should start collecting data within 60 seconds.
 
 Data is collected by the template at intervals of 60 seconds for each monitored MonogoDB server/environment.
+
+
+==Monitored Metrics==
+The MongoDB plugin monitors the following metrics or items during each cycle:
+  * Asserts: Total Msg Asserts
+  * Asserts: Total Regular Asserts
+  * Asserts: Total Assert Rollovers
+  * Asserts: Total User Asserts
+  * Asserts: Total Warning Asserts
+  * Background Flushing: Background Flush Average Time (ms)
+  * Background Flushing: Number of Flushes in Last 1 Minute
+  * Background Flushing: Last Background Flush Time (ms)
+  * Background Flushing: Total Background Flush Time (ms) in Last 1 Minute
+  * Cursors: Client Cursor Size
+  * Cursors: Cursor Time Outs
+  * Cursors: Open Curors
+  * Database Connections: Connections Available
+  * Database Connections: Current Connections
+  * Databases and Collections: List of All Database Stats
+  * Databases and Collections: List of Database Average Object Size
+  * Databases and Collections: List of Database Collection Count
+  * Databases and Collections: Database Count
+  * Databases and Collections: List of Database Data Size
+  * Databases and Collections: List of Database File Size
+  * Databases and Collections: List of Database Index Count
+  * Databases and Collections: List of Database Index Size
+  * Databases and Collections: Total Collections Across All Databases
+  * Databases and Collections: Total Indexes Across All Collections
+  * Databases and Collections: Total Objects Across All Databases
+  * Databases and Collections: Total Size of All Databases (MB)
+  * Databases and Collections: List of Database Extent Count
+  * Databases and Collections: List of Database Object Count
+  * Databases and Collections: List of Database Storage Size
+  * Global Locking: Current Reader Queue Length
+  * Global Locking: Current Total Queue Length
+  * Global Locking: Current Writer Queue Length
+  * Global Locking: Total Lock Time (microseconds) in Last 1 Minute
+  * Index Effectiveness: Total Btree Accesses in Last 1 Minute
+  * Index Effectiveness: Total Btree Hits in Last 1 Minute
+  * Index Effectiveness: Total Btree Misses in Last 1 Minute
+  * Index Effectiveness: Btree Miss Ratio
+  * Index Effectiveness: Total Btree Resets
+  * Memory: Heap Memory Size (MB)
+  * Memory: Page Faults/minute
+  * Memory: Memory Addressing (32/64 bit)
+  * Memory: Resident Memory Size (MB)
+  * Memory: Virtual Memory Size (MB)
+  * Miscellaneous:  MongoDB Plugin Checksum
+  * Miscellaneous: MongoDB Plugin Data Collection Time (seconds)
+  * Miscellaneous: MongoDB Plugin Version
+  * Miscellaneous: MongoDB Version
+  * Miscellaneous: MongoDB Uptime (seconds)
+  * OpCounters: Total Commands in Last 1 Minute
+  * OpCounters: Total Delete Ops in Last 1 Minute
+  * OpCounters: Total Getmore Ops in Last 1 Minute
+  * OpCounters: Total Insert Ops in Last 1 Minute
+  * OpCounters: Total Query Ops in Last 1 Minute
+  * OpCounters: Total Update Ops in Last 1 Minute
+  * Replication: Is Mongo Server Part of a ReplicatSet
+  * Replication: Entries in oplog.rs Collection
+  * Replication: Count of ReplicaSet Members Needing Attention
+  * Replication: List of ReplicaSet Members in Attention State
+  * Replication: ReplicaSet Host Names
+  * Replication: ReplicaSet Member Count
+  * Replication: ReplicaSet Name
+  * Sharding: Is Mongo Server a Cluster Router (mongos process)
+  * Sharding: List of Sharded Databases and Collections
+  * Sharding: Total Number of Chunks
+  * Sharding: Total Number of Shards
+  * Sharding: List of Shards in Cluster
+  * Sharding: List of Sharded Collections in Cluster
+  * Sharding: Total Number of Sharded Collections
+
+
+
+==Pre-canned Triggers==
+Triggers in Zabbix are events of interest that happen with respect to the monitored metrics. For example, the plugin keeps track of the total number of collections. If this count changes, it flags this event by firing a trigger. You can choose to ignore this trigger or you can choose to take an action - e.g. send an email or run a shell script.
+
+The MongoDB plugin comes with the following built-in triggers:
+
+  * One or more databases have been created
+  * One or more databases have been destroyed
+  * No Data Received in 5 minutes
+  * One or more replication members need attention
+  * One or more members have been removed from the ReplicaSet
+  * One or more members have been added to the ReplicaSet
+  * One or more new shard chunks have been created
+  * One or more shards have been added to the cluster
+  * One or more shards have been removed from the cluster
+  * One or more new sharded collections have been created
+  * One or more collections have been dropped
+  * One or more collections have been added
+  * One or more indexes have been dropped
+  * One or more indexes have been added
+
+
+
+==Pre-canned Graphs==
+While Zabbix allows creating graphing one or more monitored metric, the plugin comes with the following pre-canned graphs to get you productive immediately:
+
+*MongoDB Memory Footprint:* This graph plots the following metrics
+  * Virtual Memory Size (MB)
+  * Heap Memory Size (MB)
+  * Resident Memory Size (MB)
+
+*MongoDB Database Operations:* This graph plots the following metrics
+  * Total Query Ops in Last 1 Minute
+  * Total Update Ops in Last 1 Minute
+  * Total Insert Ops in Last 1 Minute
+  * Total Delete Ops in Last 1 Minute
+  * Total Command Ops in Last 1 Minute
+  * Total Get More Ops in Last 1 Minute
+
+*MongoDB Cumulative Database Size in MB*
+ 
