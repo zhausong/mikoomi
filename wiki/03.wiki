@@ -40,7 +40,7 @@ extension=mongo.so
 
 Ensure that the php MongoDB driver is setup and configured properly by testing out one of the sample php programs for MongoDB driver (http://us2.php.net/manual/en/mongo.tutorial.php).
 
-Download the MongoDB Plugin shell script and php files and copy them into the /etc/zabbix/externalscripts directory on the Zabbix server. *Make sure that the php script and shell script are made executable.*
+Download the MongoDB Plugin shell script and php file from http://mikoomi.googlecode.com/svn/plugins/ and copy them into /etc/zabbix/externalscripts directory on the Zabbix server. *Make sure that the php script and shell script are made executable.*
 
 Next open up a browser and download the MongoDB Zabbix template.
 Now login to the Zabbix frontend (user = admin, password = zabbix).
