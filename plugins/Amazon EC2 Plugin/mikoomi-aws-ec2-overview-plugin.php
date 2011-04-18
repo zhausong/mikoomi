@@ -416,9 +416,10 @@ function EC2_DescribeSpotPriceHistory($creds)
       }
       foreach ($spotPriceHistorySet->item as $item) {
           // Print all the data to be sent to Zabbix
+          $chars_to_replace = array('/', ' ') ;
           write_to_data_file("$zabbix_name SpotPrice_". 
                              "$item->instanceType" . 
-                             str_replace('/', '_' , $item->productDescription) . 
+                             str_replace($chars_to_replace, '_' , $item->productDescription) . 
                              " " . $item->spotPrice) ;
       }
    }
@@ -717,7 +718,7 @@ write_to_data_file("$zabbix_name EC2_Plugin_Checksum $md5_checksum_string") ;
 
 fclose($data_file_handle) ;
 
-exec("zabbix_sender -vv -z localhost -i $data_file_name 2>&1", $log_file_data) ;
+exec("zabbix_sender -vv -z 127.0.0.1 -i $data_file_name 2>&1", $log_file_data) ;
 
 foreach ($log_file_data as $log_line)
 {
