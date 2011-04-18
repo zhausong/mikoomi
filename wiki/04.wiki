@@ -135,6 +135,8 @@ The Amazon EC2 plugin monitors the following metrics or items during each cycle:
   * EC2 Spot Price - for c1.mediumWindows
   * EC2 Spot Price - for c1.xlargeLinux_UNIX
   * EC2 Spot Price - for c1.xlargeWindows
+  * EC2 Spot Price - for cg1.4xlargeLinux_UNIX
+  * EC2 Spot Price - for cc1.4xlargeLinux_UNIX
   * EC2 Spot Price - for m1.largeLinux
   * EC2 Spot Price - for m1.largeWindows
   * EC2 Spot Price - for m1.smallLinux_UNIX
@@ -149,6 +151,17 @@ The Amazon EC2 plugin monitors the following metrics or items during each cycle:
   * EC2 Spot Price - for m2.xlargeWindows
   * EC2 Spot Price - for t1.microLinux_UNIX
   * EC2 Spot Price - for t1.microWindows
+  * EC2 Spot Price - for t1.microSUSE_Linux
+  * EC2 Spot Price - for cc1.4xlargeSUSE_Linux
+  * EC2 Spot Price - for m2.xlargeSUSE_Linux
+  * EC2 Spot Price - for m1.smallSUSE_Linux
+  * EC2 Spot Price - for 4xlargeSUSE_Linux
+  * EC2 Spot Price - for m1.xlargeSUSE_Linux
+  * EC2 Spot Price - for c1.mediumSUSE_Linux
+  * EC2 Spot Price - for m1.largeSUSE_Linux
+  * EC2 Spot Price - for cg1.4xlargeSUSE_Linux
+  * EC2 Spot Price - for m2.2xlargeSUSE_Linux
+  * EC2 Spot Price - for c1.xlargeSUSE_Linux
   * EC2 Volumes - Total in attached state
   * EC2 Volumes - Total size  (GB) of volumes in attached state
   * EC2 Volumes - Total in attaching state
