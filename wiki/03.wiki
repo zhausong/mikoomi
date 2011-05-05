@@ -64,12 +64,12 @@ Follow these steps to start monitoring a MongoDB server
   * Next click on the *_Add_* button in the *_Linked templates_* section of the screen.
   * You will see a list of templates - select the template *_Template_MongoDB_*
 
-In the Macros section, add the following two macros -
-*{$SERVER}* and *{$PORT}*
+In the Macros section, add the following three macros -
+  * *{$MONGODB_HOSTNAME}* = Hostname or IP address of mongod or mongos process
+  * *{$MONGODB_PORT}* = Port number for mongod or mongos process
+  * *{$ZABBIX_HOSTNAME}* = The hostname for the MongoDB server/instance as defined in Zabbix
 
-The value for {$SERVER} should be the hostname or IP address for your mongod or mongos process to be monitored.
-
-The value for {$PORT} should be the port number for your mongod or mongos process (it is required even if the default port is used).
+Note that all the 3 macros above are required even if the defaults are used.
 
 *Note that in a sharded and/or replicated MongoDB environment, you need to monitor only ONE of the mongos process*. However that process needs to be aware of the entire Mongo environment (or cluster) - i.e. all the shards and all the replicas within each replicaset. 
 
