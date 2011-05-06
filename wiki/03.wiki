@@ -67,7 +67,7 @@ Follow these steps to start monitoring a MongoDB server
 In the Macros section, add the following three macros -
   * *{$MONGODB_HOSTNAME}* = Hostname or IP address of mongod or mongos process
   * *{$MONGODB_PORT}* = Port number for mongod or mongos process
-  * *{$ZABBIX_HOSTNAME}* = The hostname for the MongoDB server/instance as defined in Zabbix
+  * *{$MONGODB_ZABBIX_NAME}* = The hostname for the MongoDB server/instance as defined in Zabbix
 
 Note that all the 3 macros above are required even if the defaults are used.
 
