@@ -118,6 +118,14 @@ The MongoDB plugin monitors the following metrics or items during each cycle:
   * Index Effectiveness: Total Btree Misses in Last 1 Minute
   * Index Effectiveness: Btree Miss Ratio
   * Index Effectiveness: Total Btree Resets
+  * Journaling: Commits in last 1 Minute
+  * Journaling: Commits in Writelocks in last 1 Minute
+  * Journaling: Datafile Write Time (ms) in last 1 Minute
+  * Journaling: Datafile Writes (MB) in last 1 Minute
+  * Journaling: Early Commits in last 1 Minute
+  * Journaling: Journal Write Time (ms) in last 1 Minute
+  * Journaling: Journal Writes (MB) in last 1 Minute
+  * Journaling: Log Buffer Prep Time (ms) in last 1 Minute
   * Memory: Heap Memory Size (MB)
   * Memory: Page Faults/minute
   * Memory: Memory Addressing (32/64 bit)
@@ -128,6 +136,9 @@ The MongoDB plugin monitors the following metrics or items during each cycle:
   * Miscellaneous: MongoDB Plugin Version
   * Miscellaneous: MongoDB Version
   * Miscellaneous: MongoDB Uptime (seconds)
+  * Network Activity: Network Inbound Traffic (MB)
+  * Network Activity: Network Outbound Traffic (MB)
+  * Network Activity: Network Requests
   * OpCounters: Total Commands in Last 1 Minute
   * OpCounters: Total Delete Ops in Last 1 Minute
   * OpCounters: Total Getmore Ops in Last 1 Minute
@@ -191,4 +202,10 @@ While Zabbix allows creating graphing one or more monitored metric, the plugin c
   * Total Command Ops in Last 1 Minute
   * Total Get More Ops in Last 1 Minute
 
+*MongoDB Journaling:* This graph plots the following metrics
+  * Commits in last 1 Minute
+  * Datafile Writes (MB) in last 1 Minute
+  * Datafile Write Time (ms) in last 1 Minute
+  * Journaling: Journal Writes (MB) in last 1 Minute
+  * Journaling: Journal Write Time (ms) in last 1 Minute
  
