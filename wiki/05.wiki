@@ -1,0 +1,197 @@
+#summary Chapter 5: Apache Hadoop Plugin
+
+=Apache Hadoop Plugin=
+
+
+==Overview==
+
+The *Apache Hadoop Plugin* can be used to monitor Namenode and of a Hadoop Cluster. [http://hadoop.apache.org Hadoop] is the leading and defacto distributed big data processing system "out there". While it is used by companies like Yahoo (who supposedly have the largest Hadoop cluster), Facebook, Groupon to name a few, there seems to be only a single monitoring solution out there - [http://wiki.apache.org/hadoop/GangliaMetrics Ganglia]. As you read the documentation, you will realize that the two are very tightly coupled and are very sensitive about each other's version, libraries, etc.
+
+The Apache Hadoop plugin has been designed to be loosely coupled and does not require installing any software on the Hadoop cluster or the Zabbix server. Sounds too good to be true? Why don't you continue reading below......
+
+==Setup and Configuration==
+
+The Apache Hadoop Plugin uses screen-scraping of the Hadoop NameNode and JobTracker Web UI interfaces. There is no need to add or change any Hadoop configuration parameters or restart your Hadoop cluster. You can be up and running in as little as 5 minutes after downloading the plugin.
+
+The plugin makes use of a command tool called curl which needs to be installed. On the Zabbix appliance, you can do this by logging in as root (default password = zabbix) running the command *`yast -i curl`*. Note that yast will first update its package repository and this takes a couple of minutes, but the curl package itself it is quite small.
+
+Next download the Apache Hadoop Plugin which consists of 2 shell scripts and 2 template xml files from http://mikoomi.googlecode.com/svn/plugins/. Create a directory *`/etc/zabbix/externalscripts`* on the Zabbix appliance and copy the shell scripts to this directory.  
+
+Next open up a browser and download the NameNode and JobTracker Zabbix template files from http://mikoomi.googlecode.com/svn/plugins/.
+Open up another browser window or tab and login to the Zabbix frontend (user = admin, password = zabbix).
+
+Navigate as follows: 
+  * Configuration >> Templates
+  * Click on the "Import Template" button on the top right-hand corner
+  * In the "Import file" dialog box, browse/search/enter the filename of the Zabbix template that was downloaded
+  * Upload the template
+
+*_Now you are ready to start monitoring your Hadoop cluster as described below.
+
+==Monitoring Your Hadoop Cluster==
+ 
+Follow these steps to start monitoring: 
+  * login to the Zabbix front-end and navigate to *_Configuration >> Hosts_*
+  * Click on *_Create Host_* button on the top right-hand corner. 
+  * Fill in the details - where Name = your choice of name for collection of Amazon AWS EC2 resources to be monitored
+  * Next click on the *_Add_* button in the *_Linked templates_* section of the screen.
+  * You will see a list of templates - select the template *_Template_Amazon_AWS_EC2_*
+
+In the Macros section, add the following three macros -
+  * *{$AWS_ACCOUNT}*
+  * *{$AWS_ACCOUNT_ACCESS_KEY}*
+  * *{$AWS_ACCOUNT_SECRET_KEY}*
+
+
+The value for {$AWS_ACCOUNT} should be your Amazon EC2 account id. The value for {$AWS_ACCOUNT_ACCESS_KEY} should be your AWS account access key and the value for {$AWS_ACCOUNT_SECRET_KEY} should be the account access secret key. Note that you can get this informaton by logging into Amazon AWS and clicking on *_Account_* and then  *_Security Credentials_*.
+
+
+
+
+==Monitored Metrics==
+The Amazon EC2 plugin monitors the following metrics or items during each cycle:
+
+
+  * Total non-public AMI images
+  * Total public AMI images
+  * Total AMI images
+  * EC2 Instances - Total with monitoring disabled
+  * EC2 Instances - Total with monitoring disabling
+  * EC2 Instances - Total with monitoring enabled
+  * EC2 Instances - Total with monitoring pending
+  * EC2 Instances - Total in pending state
+  * EC2 Instances - Total unavailable due to InstanceInitiatedShutdown
+  * EC2 Instances - Total unavailable due to InternalError (internal to instance)
+  * EC2 Instances - Total unavailable due to InvalidSnapshot
+  * EC2 Instances - Total unavailable due to UserInitiatedShutdown
+  * EC2 Instances - Total unavailable due to VolumeLimitExceeded
+  * EC2 Instances - Total unavailable due to InsufficientInstanceCapacity
+  * EC2 Instances - Total unavailable due to InternalError
+  * EC2 Instances - Total unavailable due to SpotInstanceTermination
+  * EC2 Instances - Total in running state
+  * EC2 Instances - Total in shutting-down state
+  * EC2 Instances - Total in stopped state
+  * EC2 Instances - Total in stopping state
+  * EC2 Instances - Total in terminated state
+  * EC2 Instances - Total of type c1.medium
+  * EC2 Instances - Total of type c1.xlarge
+  * EC2 Instances - Total of type cc1.4xlarge
+  * EC2 Instances - Total of type cg1.4xlarge
+  * EC2 Instances - Total of type m1.large
+  * EC2 Instances - Total of type m1.medium
+  * EC2 Instances - Total of type m1.small
+  * EC2 Instances - Total of type m1.xlarge
+  * EC2 Instances - Total of type m2.2xlarge
+  * EC2 Instances - Total of type m2.4xlarge
+  * EC2 Instances - Total of type m2.xlarge
+  * EC2 Instances - Total of type t1.micro
+  * EC2 Instances - Total without monitoring
+  * EC2 Elastic IP Addresses - Total assigned to instances
+  * EC2 Elastic IP Addresses - Total
+  * EC2 Elastic IP Addresses - Total unassigned/free
+  * EC2 Reserved Instances - Total  
+  * EC2 Reserved Instances - Total of type c1.medium
+  * EC2 Reserved Instances - Total of type c1.xlarge
+  * EC2 Reserved Instances - Total of type m1.large
+  * EC2 Reserved Instances - Total of type m1.medium
+  * EC2 Reserved Instances - Total of type m1.small
+  * EC2 Reserved Instances - Total of type m2.2xlarge
+  * EC2 Reserved Instances - Total of type m2.4xlarge
+  * EC2 Reserved Instances - Total of type other
+  * EC2 Snapshots - Total Size GB
+  * EC2 Snapshots - Total in status completed
+  * EC2 Snapshots - Total in status error
+  * EC2 Snapshots - Total in status pending
+  * EC2 Snapshots - Total
+  * EC2 Snapshots (Amazon-owned) - Total size GB
+  * EC2 Snapshots (Amazon-owned) - Total in status completed
+  * EC2 Snapshots (Amazon-owned) - Total in status error
+  * EC2 Snapshots (Amazon-owned) - Total in status pending
+  * EC2 Snapshots (Amazon-owned) - Total
+  * EC2 Snapshots (owned by others) - Total size GB
+  * EC2 Snapshots (owned by others) - Total in status completed
+  * EC2 Snapshots (owned by others) - Total in status error
+  * EC2 Snapshots (owned by others) - Total in status pending
+  * EC2 Snapshots (owned by others) - Total
+  * EC2 Snapshots (self-owned) - Total size GB
+  * EC2 Snapshots (self-owned) - Total in status completed
+  * EC2 Snapshots (self-owned) - Total in status error
+  * EC2 Snapshots (self-owned) - Total in status pending
+  * EC2 Snapshots (self-owned) - Total
+  * EC2 Spot Price - for c1.mediumLinux_UNIX
+  * EC2 Spot Price - for c1.mediumWindows
+  * EC2 Spot Price - for c1.xlargeLinux_UNIX
+  * EC2 Spot Price - for c1.xlargeWindows
+  * EC2 Spot Price - for cg1.4xlargeLinux_UNIX
+  * EC2 Spot Price - for cc1.4xlargeLinux_UNIX
+  * EC2 Spot Price - for m1.largeLinux
+  * EC2 Spot Price - for m1.largeWindows
+  * EC2 Spot Price - for m1.smallLinux_UNIX
+  * EC2 Spot Price - for m1.smallWindows
+  * EC2 Spot Price - for m1.xlargeLinux_UNIX
+  * EC2 Spot Price - for m1.xlargeWindows
+  * EC2 Spot Price - for m2.2xlargeLinux_UNIX
+  * EC2 Spot Price - for m2.2xlargeWindows
+  * EC2 Spot Price - for m2.4xlargeLinux_UNIX
+  * EC2 Spot Price - for m2.4xlargeWindows
+  * EC2 Spot Price - for m2.xlargeLinux_UNIX
+  * EC2 Spot Price - for m2.xlargeWindows
+  * EC2 Spot Price - for t1.microLinux_UNIX
+  * EC2 Spot Price - for t1.microWindows
+  * EC2 Spot Price - for t1.microSUSE_Linux
+  * EC2 Spot Price - for cc1.4xlargeSUSE_Linux
+  * EC2 Spot Price - for m2.xlargeSUSE_Linux
+  * EC2 Spot Price - for m1.smallSUSE_Linux
+  * EC2 Spot Price - for 4xlargeSUSE_Linux
+  * EC2 Spot Price - for m1.xlargeSUSE_Linux
+  * EC2 Spot Price - for c1.mediumSUSE_Linux
+  * EC2 Spot Price - for m1.largeSUSE_Linux
+  * EC2 Spot Price - for cg1.4xlargeSUSE_Linux
+  * EC2 Spot Price - for m2.2xlargeSUSE_Linux
+  * EC2 Spot Price - for c1.xlargeSUSE_Linux
+  * EC2 Volumes - Total in attached state
+  * EC2 Volumes - Total size  (GB) of volumes in attached state
+  * EC2 Volumes - Total in attaching state
+  * EC2 Volumes - Total size  (GB) of volumes in attaching state
+  * EC2 Volumes - Total in detached state
+  * EC2 Volumes - Total size  (GB) of volumes in detached state
+  * EC2 Volumes - Total in detaching state
+  * EC2 Volumes - Total size  (GB) of volumes in detaching state
+  * EC2 Volumes - Total in status available
+  * EC2 Volumes - Total size  (GB) of volumes in status available
+  * EC2 Volumes - Total in status creating
+  * EC2 Volumes - Total size  (GB) of volumes in status creating
+  * EC2 Volumes - Total in status other
+  * EC2 Volumes - Total size  (GB) of volumes in status other
+
+
+
+
+==Pre-canned Triggers==
+Triggers in Zabbix are events of interest that happen with respect to the monitored metrics. For example, the plugin keeps track of the total number of instances. If this count changes, it flags this event by firing a trigger. You can choose to ignore this trigger or you can choose to take an action - e.g. send an email or run a shell script.
+
+The Amazon EC2 plugin comes with the following built-in triggers:
+
+  * No data received from EC2 overview plugin in the last 15 minutes
+  * The number of running instances has increased
+  * The number of running instances has decreased
+  * The total number of running instances has decreased
+  * The total number of running instances has increased
+  * The total number of instances has increased
+  * The total number of instances has decreased
+  * The number of elastic IP addresss has increased
+  * The number of elastic IP addresses has decreased
+  * The number of reserved instances has increased
+  * The number of reserved instances has decreased
+  * One or more snapshots were successfully completed
+  * A new snapshot has been created
+  * One or more snapshots had errors
+  * The number of self-owned snapshots has increased
+  * The number of self-owned snapshots has decreased
+  * The number of spot instances has increased
+  * The number of spot instances has decreased
+  * One or more volumes have been attached to instances
+  * One or more volumes have been detached from instances
+  * The number of available volumes has increased
+  * The number of available volumes has decreased
+ 
