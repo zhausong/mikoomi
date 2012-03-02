@@ -5,9 +5,9 @@
 
 ==Overview==
 
-The *Apache HBase Plugin* can be used to monitor an HBase cluster. [http://hbase.apache.org HBase] is the leading distributed, big data processing datastore system on top of [http://hadoop.apache.org Hadoop] "out there". While it is used by companies like Yahoo (who supposedly have the largest Hadoop cluster), Facebook, Groupon to name a few, there seems to be only a single monitoring solution out there - [http://wiki.apache.org/hadoop/GangliaMetrics Ganglia]. As you read the Ganglia documentation or start using it, you will realize that the two are very tightly coupled and are very sensitive about each other's version, libraries, etc.
+The *Apache HBase Plugin* can be used to monitor an HBase cluster. [http://hbase.apache.org HBase] is one of the leading distributed, big data processing datastore system out there. While it is used by companies like Yahoo (who supposedly have the largest Hadoop cluster), Facebook to name a few, there seems to be only a single monitoring solution out there - [http://wiki.apache.org/hadoop/GangliaMetrics Ganglia]. As you read the Ganglia documentation or start using it, you will realize that the two are very tightly coupled and are very sensitive about each other's version, libraries, etc. Furthermore, setting up and configuring Ganglia and HBase together is non-trivial.
 
-The Apache HBase plugin has been designed to be loosely coupled with the HBase cluster and does not require installing any software on the HBase cluster or the Zabbix server. Sounds too good to be true? Why don't you continue reading below......
+The mikoomi Apache HBase plugin has been designed to be loosely coupled with the HBase cluster and does not require installing any software on the HBase cluster or the Zabbix server. Sounds too good to be true? Why don't you continue reading below......
 
 ==Setup and Configuration==
 
