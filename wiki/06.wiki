@@ -1,4 +1,4 @@
-#summary Chapter 5: Apache HBase Plugin
+#summary Chapter 6: Apache HBase Plugin
 
 =Apache HBase Plugin=
 
