@@ -5,13 +5,13 @@
 
 ==Overview==
 
-The *Apache HBase Plugin* can be used to monitor an HBase cluster. [http://hbase.apache.org HBase] is one of the leading distributed, big data processing datastore system out there. While it is used by companies like Yahoo (who supposedly have the largest Hadoop cluster), Facebook to name a few, there seems to be only a single monitoring solution out there - [http://wiki.apache.org/hadoop/GangliaMetrics Ganglia]. As you read the Ganglia documentation or start using it, you will realize that the two are very tightly coupled and are very sensitive about each other's version, libraries, etc. Furthermore, setting up and configuring Ganglia and HBase together is non-trivial.
+The *Apache HBase Plugin* can be used to effortlessly monitor HBase clusters. [http://hbase.apache.org HBase] is the leading distributed, big data processing datastore system on top of [http://hadoop.apache.org Hadoop] "out there". While it is used by companies like Yahoo (who supposedly have the largest Hadoop cluster), Facebook, Groupon to name a few, there seems to be only one single monitoring solution out there - [http://wiki.apache.org/hadoop/GangliaMetrics Ganglia]. As you read the Ganglia documentation or start using it, you will realize that the two are very tightly coupled and are very sensitive about each other's version, libraries, etc.
 
-The mikoomi Apache HBase plugin has been designed to be loosely coupled with the HBase cluster and does not require installing any software on the HBase cluster or the Zabbix server. Sounds too good to be true? Why don't you continue reading below......
+The Apache HBase plugin has been designed to be loosely coupled with the HBase cluster and does not require installing any software on the HBase cluster or the Zabbix server. Sounds too good to be true? Why don't you continue reading below......
 
 ==Setup and Configuration==
 
-The instructions below are geared for installing on a Zabbix appliance as available from [http://www.zabbix.com Zabbix]. If you have never "played" with Zabbix before, the appliance is the best way to become familiar. If you already have an existing Zabbix server, then you are already familiar with the Zabbix system and will easily be able to adopt the instructions below to your environment. The only changes/deviations from the instructions below would be the location for the mikoomi scripts - which should the directory specified for external scripts in your Zabbix server configuration file. 
+The instructions below are geared for installing on a Zabbix appliance as available from [http://www.zabbix.com Zabbix]. If you have never "played" with Zabbix before, the appliance is the best way to become familiar. If you already have an existing Zabbix server, then you are already familiar with the Zabbix system and will easily be able to adopt the instructions to your environment. The only changes/deviations from the steps below would be the location for the mikoomi scripts - which is the directory specified for external scripts in your Zabbix server configuration file. 
 
 Note that Zabbix appliance and Zabbix server are used synonymously below.
 
@@ -37,9 +37,9 @@ Navigate as follows:
 Follow these steps to start monitoring: 
   * login to the Zabbix front-end and navigate to *_Configuration >> Hosts_*
   * Click on *_Create Host_* button on the top right-hand corner. 
-  * Fill in the details - where Name = your choice of name for the HBase cluster
+  * Fill in the details - where Name = your choice of name for the HBase cluster (the name should not contain any spaces - it should be strictly alphanumeric and underscore characters)
   * Next click on the *_Add_* button in the *_Linked templates_* section of the screen.
-  * You will see a list of templates - select the template *XXXXXXXXXXXXXXXXXXXXXXXX*
+  * You will see a list of templates - select the template *Template_HBase*
 
 In the Macros section, add the following three macros -
   * *{$HBASE_MASTER_HOST}*
@@ -95,4 +95,15 @@ Like the regionserver metrics, these metrics are collected for each table and th
 ==Pre-canned Triggers==
 Triggers in Zabbix are events of interest that happen with respect to the monitored metrics. For example, the plugin keeps track of the total number of nodes in the cluster. If this count changes, it flags this event by firing a trigger. You can choose to ignore this trigger or you can choose to take an action - e.g. send an email or run a shell script.
 
- 
+Out of the box, the template comes with the following built-in trigger checks:
+  * Average block cache evictions have been high for the past 1 hour (avg is 100% more as compared to the last 4 hours)
+  * Average block cache misses have been high for the past 1 hour (avg is 100% more as compared to the last 4 hours)
+  * Average queue size total has been high for the past 1 hour (avg is 100% more as compared to the last 4 hours)
+  * Average regionserver requests have been high for the past 1 hour (avg is 100% more as compared to the last 4 hours)
+  * Cluster-wide memstore size total has been high for the past 1 hour (avg total is 100% more as compared to the last 4 hours)
+  * Cluster-wide number of regions has increased by 10% over the last 1 hour (as compared to the last 4 hours)
+  * Cluster-wide number of storefiles has increased by 10% over the last 1 hour (as compared to the last 4 hours)
+  * Cluster-wide number of stores has increased by 10% over the last 1 hour (as compared to the last 4 hours)
+  * No monitoring data received for the last 10 minutes
+  * One or more regionservers/nodes has been offlined/shutdown
+  * One or more regionservers/nodes have been added/re-started/brought online
