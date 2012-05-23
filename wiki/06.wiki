@@ -5,7 +5,7 @@
 
 ==Overview==
 
-The *Apache HBase Plugin* is a Zabbix plugin that can be used to effortlessly monitor HBase clusters. [http://hbase.apache.org HBase] is the leading distributed, big data processing datastore system on top of [http://hadoop.apache.org Hadoop] "out there". While it is used by companies like Yahoo (who supposedly have the largest Hadoop cluster), Facebook, Groupon to name a few, there seems to be only one single monitoring solution out there - [http://wiki.apache.org/hadoop/GangliaMetrics Ganglia]. As you read the Ganglia documentation or start using it, you will realize that the two are very tightly coupled and are very sensitive about each other's version, libraries, etc.
+The *Apache HBase Plugin* is a Zabbix plugin that can be used to effortlessly monitor HBase clusters. [http://hbase.apache.org HBase] is the leading distributed, big data processing datastore system on top of [http://hadoop.apache.org Hadoop] "out there". While it is used by companies like Yahoo (who supposedly have the largest Hadoop cluster), Facebook, Groupon to name a few, there seems to be only one single monitoring solution out there - [http://wiki.apache.org/hadoop/GangliaMetrics Ganglia] and [http://opentsdb.net/ openTSDB]. As you read the documentation, you will realize that the two monitoring solutions are very tightly coupled to Hadoop and are very sensitive about its version, libraries, etc.
 
 The Apache HBase plugin has been designed to be loosely coupled with the HBase cluster and does not require installing any software on the HBase cluster or the Zabbix server. Sounds too good to be true? Why don't you continue reading below......
 
@@ -32,7 +32,7 @@ Navigate as follows:
 
 *_Now you are ready to start monitoring your HBase cluster as described below.
 
-==Monitoring Your Hadoop Cluster==
+==Monitoring Your HBase Cluster==
  
 Follow these steps to start monitoring: 
   * login to the Zabbix front-end and navigate to *_Configuration >> Hosts_*
